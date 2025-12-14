@@ -1,0 +1,67 @@
+crm_backend/
+├── venv/                   # Python virtual environment containing all project dependencies
+├── manage.py               # Command-line utility to run the server, apply migrations, create superusers, etc.
+├── crm_project/            # Main project folder containing configuration files
+│   ├── __init__.py         # Marks the folder as a Python package
+│   ├── settings.py         # Project configuration: database, installed apps, middleware, allowed hosts
+│   ├── urls.py             # Main URL routing: maps URLs to app endpoints
+│   ├── asgi.py             # ASGI entry point for async server deployments
+│   └── wsgi.py             # WSGI entry point for traditional server deployments
+└── api/                    # Django app to handle API endpoints
+    ├── __init__.py         # Marks the folder as a Python package
+    ├── admin.py            # Registers database models for the Django admin interface
+    ├── apps.py             # App configuration
+    ├── migrations/         # Database migration files (auto-generated)
+    ├── models.py           # Defines Python classes that map to database tables
+    ├── serializers.py      # Converts models to/from JSON for API responses
+    ├── views.py            # Handles API request logic (GET, POST, PUT, DELETE)
+    └── urls.py             # Defines the routes/endpoints for the API app
+
+
+
+
+##########################################################################################
+##########################################################################################
+
+
+database/
+    \tables
+        users
+        refresh_tokens
+        login_history
+        otp_logs
+        mobilis_phone_prefixes
+        user_sessions
+        audit_logs(Logins + logouts + OTP + permissions + account changes)
+    
+    \function
+        generate_otp
+        is_otp_valid
+        verify_otp
+        reset_failed_login_attempts
+        increment_failed_login_attempts
+        lock_user_account
+        unlock_user_account
+        deactivate_user_account
+        is_user_locked
+        log_login_attempt
+        get_failed_login_attempts
+        create_user_session
+        end_user_session
+        update_session_activity
+        get_active_sessions_count
+        is_valid_mobilis_phone
+        user_exists_by_phone
+        get_user_by_phone
+        get_total_active_users
+        get_total_locked_users
+        get_login_statistics
+        get_most_active_users
+        cleanup_expired_otps
+        cleanup_expired_refresh_tokens
+        cleanup_expired_sessions
+        cleanup_old_audit_logs
+        cleanup_old_login_history
+        detect_suspicious_activity
+        create_audit_log
+        get_user_activity_summary
