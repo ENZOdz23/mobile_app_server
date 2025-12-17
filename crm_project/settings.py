@@ -11,11 +11,22 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get("DATABASE_URL")
+    )
+}
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -25,14 +36,7 @@ SECRET_KEY = 'django-insecure-4eeau)quf&=*lbfk-h7ff8*b1rq(ox8_qactts+g*l6-wx5)qu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',   # Allow access from the VM itself
-    '127.0.0.1',   # Allow access via local loopback
-    '0.0.0.0',     # Allow access from any IP (useful for accessing from host machine or other devices on network)
-    '192.168.43.26',
-    '*',
-    '10.0.2.15',   # Allow access from the host machine
-]
+ALLOWED_HOSTS = ["*"]   # Allow access from the host machine
 
 
 
